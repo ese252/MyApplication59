@@ -3,6 +3,7 @@ package com.example.a401_08.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString("name","Samira").apply();
+        String S=PreferenceManager.getDefaultSharedPreferences(this).getString("name","Not Save");
+        Toast.makeText(this,S,Toast.LENGTH_LONG).show();
+
         Button button=findViewById(R.id.btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
